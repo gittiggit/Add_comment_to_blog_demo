@@ -516,4 +516,34 @@ Step 34: Add comment to articles
          </div>
 
 ----------------------------------------------------------------------
+Step 35: Pdf generation using pdfkit
+       a. gem "wkhtmltopdf"
+          gem "wkhtmltopdf-binary"
+       or
+       gem install PDFKit
+       b. Next we need to add the rake middleware, and to do that in the config/application.rb
+
+        config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+       c. To see all the middleware in your app
+       => rake middleware
+
+       #d. install the dependent library
+       # =>  gem install wkhtmltopdf-binary
+
+       e. Next create a file config/initializers/pdfkit.rb, add the codes
+
+
+      PDFKit.configure do |config|
+         #config.wkhtmltopdf = '/path/to/wkhtmltopdf-binary'
+        config.default_options = {
+            :page_size => 'Legal',
+            :print_media_type => true
+        }
+        # Use only if your external hostname is unavailable on the server.
+        config.root_url = "http://localhost"
+        # config.protocol = 'http'
+        config.verbose = false
+      end
+
 

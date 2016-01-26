@@ -11,10 +11,16 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem "will_paginate", "3.0.7"
 gem "bootstrap-will_paginate", "0.0.10"
+gem 'pdfkit'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "pry"
 gem "bootstrap-sass", "~> 3.3.6"
 gem 'bcrypt', '~> 3.1.7'
+# gem "wicked_pdf"
+gem "wkhtmltopdf"
+gem "wkhtmltopdf-binary"
+#gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
+# gem 'wkhtmltopdf-binary-edge', '~> 0.12.2.1'
 group :development, :test do
   gem 'byebug'
 end

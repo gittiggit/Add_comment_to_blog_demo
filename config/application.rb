@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 # require 'pdfkit'
 # require 'wicked_pdf'
+require "csv"
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems

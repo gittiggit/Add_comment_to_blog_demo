@@ -547,3 +547,61 @@ Step 35: Pdf generation using pdfkit
       end
 
 
+================================================================================================
+
+Step 36: export to excel/csv
+        a. first in the concig/application.rb, add the following lines
+          require "csv"
+
+        b. to print all the products, in the index action
+
+          def index
+            @products = Product.order(created_at: :desc)
+            respond_to do |format|
+              format.html
+              # format.csv {render text: @products.to_csv} # generate a csv file
+              format.csv {send_data @products.to_csv}      # generate a csv file
+            end
+           end
+        c. In the product.rb
+
+           def self.to_csv
+             CSV.generate do |csv|
+               csv << column_names
+               all.each do |product|
+                 csv << product.attributes.values_at(*column_names)
+               end
+             end
+           end
+
+        d.Now to create excel file, in the initializers/mime_types.rb, add the
+
+          Mime::Type.register "application/xls", :xls
+
+        f. Add an option to the index action while calling the to_csv method
+           format.xls {send_data @products.to_csv(col_sep: "\t")}
+
+        g. Now add the option to the to_csv method in the product.rb model
+
+***Creating a seperate template for xls file
+       a. Create a file views/products/index.xls.erb
+
+
+     <table border="2">
+       <tr>
+         <th>Name</th>
+         <th>Amount</th>
+         <th>Note</th>
+         <th colspan="3"></th>
+       </tr>
+       <% @products.each do |product| %>
+         <tr>
+           <td><%= product.name %></td>
+           <td><%= product.amount %></td>
+           <td><%= product.note %></td>
+           cnfvgb
+         </tr>
+       <% end %>
+     </table>
+
+

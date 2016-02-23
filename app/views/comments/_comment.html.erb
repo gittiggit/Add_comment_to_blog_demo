@@ -1,8 +1,3 @@
-<% @comments.each do |comment| %>
-  <div class="row">
-    <div class="well col-md-12 col-md-offset-0">
-      <li><%= link_to comment.user.username, user_path(comment.user) if comment.user %></li>
-      <li><%= comment.content %></li>
-    </div>
-  </div>
-<% end %>
+
+<li><%= link_to comment.user.username, user_path(comment.user) if comment.user %></li>
+<li><%= comment.content %></li>

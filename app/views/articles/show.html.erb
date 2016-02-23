@@ -37,8 +37,14 @@
         <%= c.submit class:"btn btn-info btn-sm" %>
       <% end %>
     </div>
-    <div id="comment_user">
-       <%= render "comments/comment" %>
+    <div class="row">
+      <div class="col-md-12 col-md-offset-0">
+        <div id="comment_user">
+          <% @comments.each do |comment| %>
+                <%= render "shared/comment", obj: comment %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </ul>
 </div>

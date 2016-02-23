@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="well col-md-12 col-md-offset-0">
+    <li><%= link_to obj.user.username, user_path(obj.user) if obj.user %></li>
+    <li><%= obj.content %></li>
+  </div>
+</div>

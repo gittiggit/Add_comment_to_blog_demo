@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.article_id = params[:article_id]
     @comment.save
+    @comments = Comment.all
     respond_to do |format|
       format.html {redirect_to :back}
       format.js

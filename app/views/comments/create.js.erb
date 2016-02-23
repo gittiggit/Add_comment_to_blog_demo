@@ -1,3 +1,7 @@
-$(document).ready(function(){
-$("#comment_user").prepend("<%= render @comments %>");
+$(function(){
+//$("#comment_user").replaceWith("<%#= j render @comments %>");
+  $("#comment_user").prepend(" <div class=\"row\"> <div class=\"well col-md-12 col-md-offset-0\">" +
+      " <%= j render @comment %>"  +
+      "</div> </div> ");
+  $("#comment_content").val("");
 });
